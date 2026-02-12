@@ -1,9 +1,12 @@
-# Install dependencies
-pip install -r requirements.txt
+# Update pip (opsional tapi bagus)
+python3.9 -m pip install --upgrade pip
 
-# Migrasi Database (Supabase) otomatis disini
-# Vercel akan menjalankan ini setiap kali Anda deploy ulang
+# Install dependencies dengan flag "break-system-packages"
+# Ini memaksa install library ke sistem Vercel
+python3.9 -m pip install -r requirements.txt --break-system-packages
+
+# Jalankan Migrasi
 python3.9 manage.py migrate
 
-# Siapkan file statis (CSS/JS untuk halaman Admin)
+# Collect Static
 python3.9 manage.py collectstatic --noinput
